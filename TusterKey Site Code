@@ -1,0 +1,559 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tuster Key</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: #080b09;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 370px;
+    background: #101612;
+    border: 1px solid #263c2e;
+    border-radius: 16px;
+    padding: 28px 23px;
+    box-shadow: 0 15px 50px #0008;
+    animation: enter .6s ease;
+}
+
+@keyframes enter {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 900;
+    letter-spacing: -1px;
+}
+
+.logo span {
+    color: #36e68b;
+}
+
+.status {
+    font-size: 10px;
+    color: #36e68b;
+    background: #163323;
+    border: 1px solid #28563a;
+    padding: 6px 9px;
+    border-radius: 20px;
+}
+
+h2 {
+    font-size: 21px;
+    margin-bottom: 9px;
+}
+
+.description {
+    color: #89958d;
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: 23px;
+}
+
+.separator {
+    height: 1px;
+    background: #25352a;
+    margin: 20px 0;
+}
+
+.timer {
+    text-align: center;
+    font-size: 12px;
+    color: #8b998f;
+    margin-bottom: 12px;
+}
+
+button {
+    width: 100%;
+    border: 0;
+    border-radius: 9px;
+    padding: 14px;
+    background: #36e68b;
+    color: #06120a;
+    font-weight: 800;
+    font-size: 13px;
+    cursor: pointer;
+    transition: .2s;
+}
+
+button:hover:not(:disabled) {
+    background: #62f4a6;
+    transform: translateY(-2px);
+}
+
+button:disabled {
+    background: #29362e;
+    color: #718078;
+    cursor: not-allowed;
+}
+
+.youtube-button {
+    background: #ed3030;
+    color: white;
+    margin-top: 10px;
+}
+
+.youtube-button:hover {
+    background: #ff4545 !important;
+}
+
+.quiz {
+    display: none;
+}
+
+.progress-area {
+    display: flex;
+    justify-content: space-between;
+    color: #36e68b;
+    font-size: 11px;
+    margin-bottom: 12px;
+}
+
+.progress-bg {
+    height: 5px;
+    background: #26342a;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 24px;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 10%;
+    background: #36e68b;
+    transition: .3s;
+}
+
+.question {
+    font-size: 17px;
+    font-weight: bold;
+    margin-bottom: 18px;
+}
+
+input {
+    width: 100%;
+    background: #0a100c;
+    border: 1px solid #304537;
+    border-radius: 8px;
+    padding: 14px;
+    color: white;
+    outline: none;
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+input:focus {
+    border-color: #36e68b;
+}
+
+.message {
+    font-size: 12px;
+    text-align: center;
+    margin-top: 12px;
+    min-height: 15px;
+    color: #ff7777;
+}
+
+.result {
+    display: none;
+    text-align: center;
+}
+
+.profile {
+    display: none;
+    text-align: center;
+    animation: enter .4s ease;
+}
+
+.profile-icon {
+    font-size: 38px;
+    margin-bottom: 15px;
+}
+
+.username {
+    background: #090f0b;
+    border: 1px solid #ed3030;
+    border-radius: 10px;
+    padding: 18px 8px;
+    margin: 20px 0 13px;
+    color: white;
+    font-size: 19px;
+    font-weight: bold;
+}
+
+.back-button {
+    background: #26342b;
+    color: #36e68b;
+    margin-top: 10px;
+}
+
+.success-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #163c28;
+    color: #36e68b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 23px;
+    margin: 0 auto 17px;
+}
+
+.key-box {
+    background: #09110c;
+    border: 1px solid #315c40;
+    border-radius: 10px;
+    padding: 18px 10px;
+    margin: 20px 0 13px;
+    color: #36e68b;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    word-break: break-all;
+}
+
+.copy {
+    background: #203e2c;
+    color: #54ee9a;
+}
+
+.footer {
+    border-top: 1px solid #25352a;
+    padding-top: 16px;
+    margin-top: 27px;
+    text-align: center;
+    font-size: 10px;
+    color: #637168;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="top">
+        <div class="logo">Tuster<span>Key.</span></div>
+        <div class="status">● FREE ACCESS</div>
+    </div>
+
+    <!-- TELA INICIAL -->
+
+    <div id="startArea">
+
+        <h2>Obtenha sua Key</h2>
+
+        <p class="description">
+            Complete os desafios diários e desbloqueie
+            sua chave gratuita do Tuster.
+        </p>
+
+        <div class="separator"></div>
+
+        <div class="timer" id="timer">
+            Preparando acesso: 5 segundos
+        </div>
+
+        <button id="startButton" disabled onclick="startQuiz()">
+            AGUARDE...
+        </button>
+
+        <button class="youtube-button" onclick="openProfile()">
+            ▶ TUSTER PROFILE
+        </button>
+
+    </div>
+
+    <!-- TELA DO PERFIL -->
+
+    <div class="profile" id="profile">
+
+        <div class="profile-icon">▶️</div>
+
+        <h2>Tuster Profile</h2>
+
+        <p class="description">
+            Copie e cole no seu YouTube!
+        </p>
+
+        <div class="username" id="username">
+            @TusterTheKing
+        </div>
+
+        <button class="youtube-button" onclick="copyProfile()">
+            COPIAR PERFIL
+        </button>
+
+        <div class="message" id="profileMessage"></div>
+
+        <button class="back-button" onclick="backHome()">
+            VOLTAR
+        </button>
+
+    </div>
+
+    <!-- TELA DAS PERGUNTAS -->
+
+    <div class="quiz" id="quiz">
+
+        <div class="progress-area">
+            <span id="progressText">PERGUNTA 1/10</span>
+            <span>DESAFIO</span>
+        </div>
+
+        <div class="progress-bg">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+
+        <div class="question" id="question"></div>
+
+        <input
+            id="answer"
+            placeholder="Digite sua resposta"
+            autocomplete="off"
+        >
+
+        <button onclick="checkAnswer()">
+            CONFIRMAR
+        </button>
+
+        <div class="message" id="message"></div>
+
+    </div>
+
+    <!-- TELA DA KEY -->
+
+    <div class="result" id="result">
+
+        <div class="success-icon">✓</div>
+
+        <h2>Key desbloqueada!</h2>
+
+        <p class="description">
+            Você completou todos os desafios.
+            Sua chave diária está pronta.
+        </p>
+
+        <div class="key-box" id="key"></div>
+
+        <button class="copy" onclick="copyKey()">
+            COPIAR KEY
+        </button>
+
+        <div class="message" id="copyMessage"></div>
+
+    </div>
+
+    <div class="footer">
+        TUSTER KEY © 2026 · SISTEMA GRATUITO
+    </div>
+
+</div>
+
+<script>
+
+// CONTAGEM REGRESSIVA
+
+let seconds = 5;
+
+const startButton = document.getElementById("startButton");
+
+const countdown = setInterval(() => {
+    seconds--;
+
+    if (seconds > 0) {
+        document.getElementById("timer").innerText =
+            "Preparando acesso: " + seconds + " segundos";
+    } else {
+        clearInterval(countdown);
+
+        document.getElementById("timer").innerText =
+            "Acesso disponível!";
+
+        startButton.disabled = false;
+        startButton.innerText = "START KEY";
+    }
+}, 1000);
+
+
+// PERGUNTAS
+
+const questions = [
+    ["Quanto é 1 + 1?", "2"],
+    ["Quanto é 5 + 5?", "10"],
+    ["Quanto é 10 - 5?", "5"],
+    ["Quanto é 2 x 3?", "6"],
+    ["Quantos dias tem uma semana?", "7"],
+    ["Quanto é 10 + 10?", "20"],
+    ["Qual animal faz miau?", "gato"],
+    ["Quantas rodas tem uma bicicleta?", "2"],
+    ["Quanto é 20 - 10?", "10"],
+    ["Quanto é 3 + 4?", "7"]
+];
+
+let current = 0;
+
+function startQuiz() {
+    document.getElementById("startArea").style.display = "none";
+    document.getElementById("quiz").style.display = "block";
+    showQuestion();
+}
+
+function showQuestion() {
+    document.getElementById("question").innerText =
+        questions[current][0];
+
+    document.getElementById("progressText").innerText =
+        "PERGUNTA " + (current + 1) + "/10";
+
+    document.getElementById("progressFill").style.width =
+        ((current + 1) * 10) + "%";
+
+    document.getElementById("answer").value = "";
+    document.getElementById("message").innerText = "";
+    document.getElementById("answer").focus();
+}
+
+function checkAnswer() {
+    const answer = document.getElementById("answer")
+        .value.trim().toLowerCase();
+
+    const correct = questions[current][1];
+
+    const message = document.getElementById("message");
+
+    if (answer === correct) {
+        current++;
+
+        if (current >= questions.length) {
+            document.getElementById("quiz").style.display = "none";
+            document.getElementById("result").style.display = "block";
+
+            document.getElementById("key").innerText = getDailyKey();
+        } else {
+            message.style.color = "#36e68b";
+            message.innerText = "Resposta correta!";
+
+            setTimeout(showQuestion, 500);
+        }
+    } else {
+        message.style.color = "#ff7777";
+        message.innerText = "Resposta incorreta. Tente novamente!";
+    }
+}
+
+
+// KEY DIÁRIA
+
+function getDailyKey() {
+    const now = new Date();
+
+    const start = new Date(now.getFullYear(), 0, 1);
+
+    const today = new Date(
+        now.getFullYear(),
+        now.getMonth(),
+        now.getDate()
+    );
+
+    const day = Math.floor(
+        (today - start) / 86400000
+    );
+
+    const number = 1000 + day;
+
+    return "TUSTER-FREE-" + number;
+}
+
+
+// COPIAR KEY
+
+function copyKey() {
+    const key = document.getElementById("key").innerText;
+
+    navigator.clipboard.writeText(key).then(() => {
+        document.getElementById("copyMessage").innerText =
+            "✓ Key copiada com sucesso!";
+
+        document.getElementById("copyMessage").style.color =
+            "#36e68b";
+    }).catch(() => {
+        document.getElementById("copyMessage").innerText =
+            "Não foi possível copiar automaticamente.";
+    });
+}
+
+
+// ABRIR PERFIL
+
+function openProfile() {
+    document.getElementById("startArea").style.display = "none";
+    document.getElementById("profile").style.display = "block";
+}
+
+
+// VOLTAR
+
+function backHome() {
+    document.getElementById("profile").style.display = "none";
+    document.getElementById("startArea").style.display = "block";
+}
+
+
+// COPIAR PERFIL
+
+function copyProfile() {
+    navigator.clipboard.writeText("@TusterTheKing")
+    .then(() => {
+        document.getElementById("profileMessage").innerText =
+            "Perfil copiado com sucesso!";
+
+        document.getElementById("profileMessage").style.color =
+            "#36e68b";
+    })
+    .catch(() => {
+        document.getElementById("profileMessage").innerText =
+            "Não foi possível copiar.";
+    });
+}
+
+
+// ENTER PARA RESPONDER
+
+document.getElementById("answer").addEventListener("keydown", e => {
+    if (e.key === "Enter") checkAnswer();
+});
+
+</script>
+
+</body>
+</html>
